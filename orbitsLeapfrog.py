@@ -12,9 +12,10 @@ v0 = 1
 Lz = 0.2
 Energy = -0.8
 
-R0 = 0.39
-z0 = 0
-Rdot0 = 0
+R0 = 0.15
+z0 = -0.09
+ratio2 = 3
+Rdot_sign = 1
 zdot_sign = 1
 
 x = np.zeros(size) # x position
@@ -25,9 +26,10 @@ vy = np.zeros(size) # velocity of y
 ## initial set
 x[0] = R0 
 y[0] = z0
-vx[0] = Rdot0
 Phi_eff = v0*v0/2*np.log(R0*R0 + z0*z0/q/q) + Lz*Lz/2/R0/R0
-zdot2 = (Energy - Phi_eff)*2 - Rdot0*Rdot0 
+print(Phi_eff)
+zdot2 = (Energy - Phi_eff)*2 / (ratio2+1)
+vx[0] = Rdot_sign * np.sqrt( ratio2 * zdot2 )
 vy[0] = zdot_sign * np.sqrt( zdot2 )
 
 ## calculate the particle trajectory for $N orbital periods 
@@ -40,7 +42,7 @@ for n in range(size-1):
     x[n+1] = xmid + h/2 * vx[n+1]
     y[n+1] = ymid + h/2 * vy[n+1]
     Energy = (vy[n]*vy[n] + vx[n]*vx[n])/2 + v0*v0/2*np.log(x[n]*x[n] + y[n]*y[n]/q/q) + Lz*Lz/2/x[n]/x[n]
-    print(Energy, end='\n')
+    # print(Energy, end='\n')
 
 import sys
 class safesub(dict):
@@ -54,15 +56,15 @@ def sub(text):
 ## plot the particle trajectory
 plt.plot(x,y)
 ## plot information and save
-plt.title(sub("orbit: start with R={R0}, z={z0}, Rdot={Rdot0}"))
+plt.title(sub("orbit: start with R={R0}, z={z0}, k^2={ratio2}"))
 plt.axis("equal")
 plt.xlabel("R")
 plt.ylabel("z")
-# plt.xlim(0, 0.5)
+plt.xlim(0, 0.5)
 plt.ylim(-0.2, 0.2)
 plt.grid( which="major", linewidth=0.5, color="0.75" )
 plt.grid( which="minor", linewidth=0.25, color="0.75" )
 plt.legend()
 plt.tight_layout()
-plt.savefig(sub("results/orbit_R{R0}z{z0}Rd{Rdot0}.PNG"))
+plt.savefig(sub("results/orbit_R{R0}z{z0}k{ratio2}.PNG"))
 plt.clf()
