@@ -21,6 +21,9 @@ x = np.zeros(size) # x position
 y = np.zeros(size) # y position
 vx = np.zeros(size) # velocity of x
 vy = np.zeros(size) # velocity of y
+r = np.zeros(size)
+pr = np.zeros(size)
+k = 0
 
 ## initial set
 x[0] = R0 
@@ -39,8 +42,16 @@ for n in range(size-1):
     vy[n+1] = vy[n] - h * ( v0*v0*ymid/(xmid*xmid*q*q+ymid*ymid))
     x[n+1] = xmid + h/2 * vx[n+1]
     y[n+1] = ymid + h/2 * vy[n+1]
-    Energy = (vy[n]*vy[n] + vx[n]*vx[n])/2 + v0*v0/2*np.log(x[n]*x[n] + y[n]*y[n]/q/q) + Lz*Lz/2/x[n]/x[n]
-    print(Energy, end='\n')
+    # if y[n] == 0 and y[n+1]>0:
+        # r[k] = x[n]
+        # pr[k] = vx[n]
+    if y[n]<=0 and y[n+1]>0:
+        r[k] = ( x[n]*y[n+1] - x[n+1]*y[n] ) / (y[n+1]-y[n])
+        pr[k] = ( x[n+1] - x[n] )/h
+        k = k + 1
+
+r = r[0:k]
+pr = pr[0:k]
 
 import sys
 class safesub(dict):
@@ -62,7 +73,22 @@ plt.xlim(0, 0.5)
 plt.ylim(-0.2, 0.2)
 plt.grid( which="major", linewidth=0.5, color="0.75" )
 plt.grid( which="minor", linewidth=0.25, color="0.75" )
-plt.legend()
+# plt.legend()
 plt.tight_layout()
 plt.savefig(sub("results/orbit_R{R0}z{z0}Rd{Rdot0}.PNG"))
+plt.clf()
+
+## plot the surfaces of section
+plt.scatter(r, pr)
+plt.title(sub("surfaces of section: start with R={R0}, z={z0}, Rdot={Rdot0}"))
+plt.axis("equal")
+plt.xlabel("R")
+plt.ylabel("$p_R$")
+plt.ylim(-0.9, 0.9)
+plt.xlim( 0, 0.5 )
+plt.grid( which="major", linewidth=0.5, color="0.75" )
+plt.grid( which="minor", linewidth=0.25, color="0.75" )
+# plt.legend()
+plt.tight_layout()
+plt.savefig(sub("results/SoS_R{R0}z{z0}Rd{Rdot0}.PNG"))
 plt.clf()
