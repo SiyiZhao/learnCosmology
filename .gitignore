@@ -1,1 +1,9 @@
 results/*
+ArticleTemplate/FileAusiliari/CustomArticle.sty
+ArticleTemplate/FileAusiliari/Bibliografia.bib
+ArticleTemplate/Article.tex
+ArticleTemplate/Article.pdf
+*.aux
+*.log
+*.out
+*.gz

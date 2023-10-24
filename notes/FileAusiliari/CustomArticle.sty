@@ -1,0 +1,785 @@
+	% Mattia Puddu - mattiapuddu@icloud.com
+\ProvidesPackage{Package/Definitions}
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	Pacchetti utilizzati
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	% Font
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+
+	% Lingue
+\RequirePackage[english, italian]{babel}
+
+	%	Pacchetti caricati 
+	%	Di fianco a ogni pacchetto c'è una breve descrizione riadattata da quella in ctan.org: questi pacchetti sono più o meno opzionali e possono essere rimossi se non sono utilizzati, ma in questo caso probabilmente il compilatore darebbe alcuni errori legati al fatto che essi sono utilizzati per definire alcuni stili del documento o alcune funzioni qui sotto. Per una analisi completa dei pacchetti consultare i manuali su ctan.org
+
+\RequirePackage[skins, breakable]{tcolorbox}					% Creazione di box, ad esempio per i teoremi
+%\RequirePackage[unboxed]{cwpuzzle}				% Environment puzzle
+
+\RequirePackage{
+adjustbox,								% Typesetting di box
+afterpage,									% Gestione comandi da una pagina in poi
+amsmath,									% Typesetting in ambiente matematico
+amssymb,									% Simboli in ambiente matematico
+amsthm,									% Typesetting teoremi
+accents,									% Lettere accentate
+appendix,									% Typesetting appendici
+booktabs,									% Tabelle
+changepage,								% Gestione pagine (pari/dispari, ...)	
+etoolbox,									% Modifica comandi a livello kernel
+dirtytalk,									% Migliore aspetto delle virgolette " "
+enumitem,								% Layout ambienti itemize/enumerate/description
+fancyhdr,									% Layout di pagina
+graphicx,									% Opzioni grafiche (e.g. rotatebox)
+longtable, 								% Creazione di tabelle a cavallo su più pagine
+makeidx,									% Creazione dell'indice analitico
+mathrsfs,									% Caratteri in ambiente matematico (e.g. mathscr)
+nicefrac,									% Miglioramento aspetto frazioni in ambiente matematico
+pgf,											% Grafici 2D/3D
+pgfkeys,									% Opzioni di controllo per il pacchetto precedente
+pgfmath,									% Opzioni per il pacchetto PGF
+pgfplots,									% Grafici 2D/3D per il pacchetto PGF
+polynomial,								% Typesetting di polinomi
+%setspace,								% Miglioramento gestione degli spazi nel testo
+scalerel,									% Scaling di simboli
+shorttoc,									% Typesetting del TOC
+soul,											% Typesetting del testo
+%subfig,									% Gestione delle figure
+tikz,											% Grafici 2D/3D
+tikz-3dplot,								% Grafici 3D
+titletoc,										% Typesetting di TOC, LOF, LOT
+%titling,									% Pagina del titolo 
+% tkz-base,									% Grafici 2D
+% tkz-fct,										% Strumenti per grafici 2D
+%verbatim,								% Stile di scrittura 
+wrapfig,									% Gestione di figure flottanti
+xcolor,										% Colori
+%youngtab,								% Tableaux di Ferrers e di Young
+}
+%\RequirePackage[stable]{footmisc}														% Note a piè di pagina
+\RequirePackage[fixamsmath, disallowspaces]{mathtools}	
+\mathtoolsset{showonlyrefs, showmanualtags}										% Strumenti in ambiente matematico
+
+%%%%% Testo riempitivo
+\RequirePackage[]{lipsum, blindtext}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	TikZ - PGF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{positioning, arrows, 3d, calc, cd, patterns, plotmarks, spy, intersections}
+
+\pgfplotsset{compat=newest, trig format=deg}
+\usepgflibrary{shadings}
+\usepgfplotslibrary{colorbrewer, colormaps, fillbetween, patchplots, polar}
+%\renewcommand{\addplot}{\addplot+}
+
+																%%%%% PGF Assi cartesiani (IMPOSTAZIONI GLOBALI)
+							\pgfplotsset{every axis/.append style={tick style={thin}}}
+							\pgfplotsset{
+							    every axis/.append style={
+								%Vista
+									%	unit vector ratio*=1 1 1,
+									axis on top,
+									xmin=0,
+									ymin=0,
+									view={115}{15},
+									plot box ratio=1 1 1,
+									axis lines= middle,   
+									enlarge x limits={abs=15pt},
+									enlarge y limits={abs=15pt},
+									enlarge z limits={abs=0pt},
+								%Rette
+									x axis line style={-stealth},      
+									y axis line style={-stealth},
+									z axis line style={-stealth},
+								  %Tick
+									xtick align=center,     xtick distance=1,		xtick style=thin,		xtick=\empty,				xticklabels={},
+									ytick align=center,		ytick distance=1,		ytick style=thin,		ytick=\empty,				yticklabels={},
+									ztick align=center,		ztick distance=,			ztick=\empty,		ztick style=thin,
+									tick style=black,
+							    %Label
+					    			ticklabel style={font=\tiny, black},
+									xlabel =  {\scriptsize $x$},		xlabel style={anchor=north west},
+									ylabel = {\scriptsize $y$},			ylabel style={anchor=south west},
+									zlabel = {\scriptsize $z$},			zlabel style={anchor=east},
+							}}
+
+																%%%%% PGF Assi polari (IMPOSTAZIONI GLOBALI)
+								\makeatletter
+									\def\axispolar{\@ifnextchar[\axispolar@i \axispolar@ii}
+									\def\axispolar@i[#1]{\polaraxis[
+										%	unit vector ratio*=1 1 1,
+										axis on top,
+										plot box ratio=1 1 1,
+										%	axis equal,
+										axis x line=bottom,	
+										axis y line=middle,
+										axis z line=none,
+										enlarge x limits={0},
+										enlarge y limits={.075},
+									%Rette
+										x axis line style={thin, help lines, -stealth},      
+										y axis line style={thin, help lines, -stealth},
+									%Tick
+										xtick align=center,		xtick distance=1,		xtick style=thin, 		xtick=\empty,
+										ytick align=center,		ytick distance=1,		ytick style=thin,		ytick=\empty,
+										tick style=black,
+								    %Label
+										ticklabel style={font=\scriptsize, black},
+										xlabel =  {\scriptsize $\theta$},		xlabel style={anchor=near ticklabel},
+										ylabel = {\scriptsize $\rho$},
+									%Nascondo tick scomodi
+										xtickmin = 0.00001,
+										extra y ticks = {1}, 
+										yticklabel = {\color{white}.},
+										#1]\begingroup}
+									\def\axispolar@ii{ \begingroup\polaraxis}
+									\def\endaxispolar{\endpolaraxis \endgroup}
+								\makeatother
+
+															%%%%% Impostazioni globali PLOTS
+								\pgfplotsset{every axis plot/.append style={mark=none}}
+									
+															%%%%% Impostazioni globali MARKERS DEI PUNTI
+								\tikzset{every mark/.append style={mark=*,
+									mark size=2.75pt,
+									scale=1,
+									mark options={color=black},}}
+ 															%%%%% Impostazioni globali PIN
+								\tikzset{every pin/.style={shade,
+									left color=yellow!50,
+									right color=yellow!10,
+									rectangle,
+									rounded corners=6pt,
+									font=\tiny}}
+															
+															%Impostazioni globali SEGMENTI, LINEE
+								\pgfplotsset{every axis/.append style={line width=.8pt,
+									solid,
+									tick style={ultra thick}}}
+
+															%Impostazioni globali FONT LABEL
+								\pgfplotsset{
+								    tick label style={font=\scriptsize},
+								    label style={font=\scriptsize},
+								    legend style={font=\scriptsize},}
+
+															%Impostazioni globali MAJOR GRID
+								\pgfplotsset{every major grid/.style={help lines,
+									gray,
+									very thin}}
+
+															%Impostazioni globali TITOLI PGF FIGURES
+								\pgfplotsset{every axis title/.append style={at={(0.5,1)},
+									font=\bf, black}}							
+		
+															%Impostaizioni globali LEGENDE
+								\pgfplotsset{every axis legend/.append style={shade,
+									left color=yellow!50,
+									right color=yellow!10,
+									draw=none,
+									cells={anchor=west},
+									inner xsep=2pt,
+									inner ysep=4pt,
+									nodes={inner sep=2.5pt},
+									anchor=north east,
+									at={(1.25,1.025)},}}
+
+															%Impostazioni globali COLORBAR
+								\pgfplotsset{
+									colorbar style={
+									at={(parent axis.right of north east)},
+									anchor=north west,
+									width=.5cm, 
+									axis x line = none,
+									axis equal= false,
+									ytick=\empty,},
+									colorbar shift/.style={xshift=1cm}}
+								
+															% Impostazioni globali LEGENDA A BARRE
+								\pgfplotsset{/pgfplots/xbar legend/.style={
+									/pgfplots/legend image code/.code={
+									\draw [##1,/tikz/.cd,bar width=2.5pt, yshift=-.15em,bar shift=0pt]
+										plot coordinates {(0cm,.75em) (2*\pgfplotbarwidth,.5em)};},},
+										/pgfplots/ybar legend/.style={
+											/pgfplots/legend image code/.code={
+												\draw [##1,/tikz/.cd,bar width=2.5pt,yshift=-.15em,bar shift=0pt]
+													plot coordinates {(0cm,.75em) (2*\pgfplotbarwidth,.5em)};},},
+    									/pgfplots/xbar interval legend/.style={
+											/pgfplots/legend image code/.code={
+												\draw [##1,/tikz/.cd,bar width=2.5pt,yshift=-.15em,bar shift=0pt]
+													plot coordinates {(0cm,.75em) (2*\pgfplotbarwidth,.5em)};},},
+										/pgfplots/ybar interval legend/.style=
+											/pgfplots/legend image code/.code={
+												\draw [##1,/tikz/.cd,bar width=2.5pt,yshift=-.15em,bar shift=0pt]
+													plot coordinates {(0cm,.75em) (2*\pgfplotbarwidth,.5em)};},}
+
+	%IMPOSTAZIONI TKZ	(NON IMPLEMENTATO IN QUESTO TEMPLATE, MA MI SERVE PER DOCUMENTI PERSONALI CON PACCHETTI CHE HO MODIFICATO MANUALMENTE E LI LASCIO QUI COMMENTATI PER COMODITÀ)
+%\usepackage{tkz-euclide}
+%\tkzSetUpPoint[size=2.75pt, color=black, fill=black, shape=circle, opacity=1]
+%\tkzSetUpLine[line width=.8pt, color=black, style=solid]
+%\tkzSetUpCompass[color=black, line width=.8pt, style=solid]
+%\tkzSetUpArc[color=black, line width=.8pt, style=solid]
+%\tkzSetUpColors[background=white, text=black]
+%\tkzSetUpLabel[font=\scriptsize]
+
+%Per la lunghezza di un segmento in evidenza
+%\newcommand{\SegmentInfo}[5]{\pgfkeys{/pgf/number format/.cd,fixed,precision=2}\begin{scope}[dim style/.style={#3}]  \tkzDrawSegment[dim={{\hspace{.05cm} #4\hspace{.1cm} },#5,}](#1,#2)\end{scope}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	Colori
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{Url}{RGB}{180,0,0}
+\definecolor{Cite}{RGB}{0,180,0}
+\definecolor{Link}{RGB}{0,0,250}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	Link ipertestuali
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[breaklinks, colorlinks=true, hypertexnames=false]{hyperref}
+	\hypersetup{colorlinks, % I colori sono per il pdf, per stampare impostare 'black' per tutti i colori
+			urlcolor={Url},
+			citecolor={Cite},
+			linkcolor={Link}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	Immagini
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{caption}		% Caption delle immagini
+	\captionsetup{
+	format=hang,
+	indention=-1cm,
+	labelformat= simple, 		%oppure 'empty'
+	labelsep=period,				 %oppure 'none'		'colon'		 'space'
+	labelfont=bf,
+	width=.5\textwidth,
+	skip=10pt}
+\BeforeBeginEnvironment{wrapfigure}{\setlength{\intextsep}{0pt}}		%Impostazioni wrapfigure
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	Stile di pagina
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%No numeri di pagina nelle prime pagine dei capitoli
+		\makeatletter
+		\let\ps@plain\ps@empty
+		\makeatother
+	% Frontmatter style
+		\fancypagestyle{fancyfront}{
+%		\renewcommand{\headrulewidth}{0pt}
+%		\renewcommand{\footrulewidth}{0.25pt}
+%		\pagenumbering{Roman}
+%		\fancyhead[L,R]{}
+%		\fancyfoot[C]{\small\thepage}
+%		\fancyfoot[LO,RE]{Mattia Puddu - mattiapuddu@icloud.com}
+}
+	% Mainmatter style
+\renewcommand{\subsectionmark}[1]{\markright{\thesubsection\ #1}}
+
+	\fancypagestyle{fancymain}{
+		\renewcommand{\headrulewidth}{0.25pt}
+		\renewcommand{\footrulewidth}{0.25pt}
+\fancyhead[LE,RO]{}
+
+		\fancyhead[LE, RO]{\bfseries\small\nouppercase \rightmark}
+		\fancyhead[LO, RE]{}
+		\fancyfoot[LE,RO]{\small\thepage}
+		\fancyfoot[C]{}
+		\fancyfoot[LO,RE]{Mattia Puddu - mattiapuddu@icloud.com}
+}
+	% Backmatter style
+	\fancypagestyle{fancyback}{
+%		\renewcommand{\headrulewidth}{0pt}
+%		\renewcommand{\footrulewidth}{0.25pt}
+%		\fancyhead[L,R]{}
+%		\fancyfoot[L,R]{}
+%		\fancyfoot[C]{\small\thepage}
+%		\fancyfoot[LO,RE]{Mattia Puddu - mattiapuddu@icloud.com}
+		}
+	%Pagina pari bianca alla fine di ogni capitolo	
+	\newcommand{\Bianco}{{\clearpage\thispagestyle{empty}\clearpage}}
+	\makeatletter
+		\def\cleardoublepage{\clearpage \ifodd\c@page\else
+	  	\vspace*{\fill}
+	  	\pagestyle{plain}
+  		\newpage
+		\fi}
+	\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	Environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% Impostazioni description/itemize/enumerate
+	\setlist[description]{style=multiline, topsep=0.25cm, itemsep=-0.25cm, parsep=0.5cm, labelwidth=2.5cm, labelindent=\parindent, leftmargin=3cm}
+	
+	\renewcommand{\labelitemi}{$\sbullet$}
+	\setlist[itemize]{style=multiline, topsep=0.25cm, itemsep=-0.25cm, parsep=0.5cm, labelwidth=0.35cm, labelindent=\parindent, leftmargin=.85cm}
+
+	\setlist[enumerate]{style=multiline, topsep=0.25cm, itemsep=-0.25cm, parsep=0.5cm, labelwidth=0.35cm, labelindent=\parindent, leftmargin=.85cm}
+
+
+%%%%% Ambienti theorem
+\usepackage{thmtools}
+
+	%Teoremi
+\declaretheoremstyle[within=section, thmbox={style=S, bodystyle=\normalfont\noindent, cut=true, underline=true, leftmargin=.35cm, rightmargin=5pt, hskip=.45em, vskip=.45em, thickness=.4pt}]{SettingTheorem}
+\declaretheorem[name=Teorema, style=SettingTheorem]{The}
+	%Proposizione
+\declaretheorem[name=Propositions, style=SettingTheorem]{Pro}
+	%Lemmi
+\declaretheorem[name=Lemma, style=SettingTheorem]{Le}
+	%Corollari
+\declaretheorem[name=Corollario, style=SettingTheorem]{Co}
+	%Definizioni
+\declaretheoremstyle[style=plain, within=section]{SettingDef}
+\declaretheorem[name=Definizione, style=SettingDef]{De}
+	%Esempi
+\declaretheoremstyle[within=section, mdframed={innertopmargin=2.5pt, innerbottommargin=2.5pt, innerleftmargin=.2cm, innerrightmargin=.2cm, roundcorner=50pt, backgroundcolor=black!5, linecolor=white, fontcolor=black, skipabove = 5pt, skipbelow=5pt}]{SettingExa}
+\declaretheorem[name=Esempio, style=SettingExa]{Exa}
+	%Osservazioni
+\declaretheorem[name=Osservazione, style=SettingExa]{Oss}
+	% Dimostrazione
+\renewcommand{\proofname}{\bf Dimostrazione}
+
+\makeatletter
+\newenvironment{Proof}[1][\bf\underline{\proofname}]{\par
+	\pushQED{\qed}
+	\normalfont\topsep0\p@\relax
+	\trivlist
+	\item[#1\@addpunct{}]{\color{white}.}\noindent} % Se si vuole che la dimostrazione cominci nella riga sotto aggiungere '\newline' prima di '\noindent'
+	{\popQED\endtrivlist\@endpefalse}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	Margini e note
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\note}[1]{\marginpar{\scriptsize #1}}
+\newcommand{\expl}[1]{\marginpar{\color{orange!90!black}\scriptsize #1}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	Formato titoli parti, capitoli, sezioni...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	% Parti di documento
+%Formato titoli (sotto)sezioni: il comando commentato nelle sezioni è pensato per andare a destra nelle pagine pari e a sinistra nelle pagine dispari.
+\usepackage[]{titlesec}		% Typesetting capitoli/sezioni/...
+\newcommand{\addul}[1]{\underline{#1}}
+	% Sezioni
+\titleformat{\section}{\normalfont\sffamily\Large\bfseries}{\thesection\ }{0.5em}{\addul}
+	% Sottosezioni
+\titleformat{\subsection}{\bfseries\large}{\thesubsection}{0.5em}{}
+	% Sotto-sottosezioni
+\titleformat{\subsubsection}{\bfseries\normalsize}{\thesubsubsection\ }{0.5pt}{\ul}
+	
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	TOC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\contentsmargin{0cm}
+	% Sezioni
+\titlecontents{section}[1 pc]
+{\addvspace{0pt}}
+{\normalsize\contentslabel[\bfseries\thecontentslabel]{1pc}\small}
+{}
+{\dotfill \thecontentspage}
+[]
+	% Sottosezioni
+\titlecontents{subsection}[3 pc]
+{\addvspace{1pt}}
+{\normalsize\contentslabel[\bfseries \thecontentslabel]{2.5pc} \small\hspace{-.5cm}}
+{}
+{\dotfill \thecontentspage}
+[]
+	% Sotto-sottosezioni
+\titlecontents{subsubsection}[6pc]
+{\addvspace{1pt}}
+{\normalsize\contentslabel[\bfseries\thecontentslabel]{4pc}\small\hspace{-.5cm}}
+{}
+{\dotfill \thecontentspage}
+[]
+	% TOC generico
+\usepackage{multicol} %Per mettere l'indice su due colonne
+\setlength\columnsep{40pt}
+\makeatletter
+\renewcommand{\tableofcontents}{
+{
+\begin{multicols}{2}
+		\fontsize{10.5}{20}\selectfont 
+	\@starttoc{toc}
+\end{multicols}
+}}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Comandi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Caratteri
+\newcommand{\A}{\mathbb{A}}
+\renewcommand{\AA}{\mathcal{A}}
+\newcommand{\AAA}{\mathscr{A}}
+
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\BB}{\mathcal{B}}	
+\newcommand{\BBB}{\mathscr{B}}
+
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\CC}{\mathcal{C}}	
+\newcommand{\CCC}{\mathscr{C}}
+
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\DDD}{\mathscr{D}}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\EEE}{\mathscr{E}}
+
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\FFF}{\mathscr{F}}
+
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\GGG}{\mathscr{G}}
+
+\renewcommand{\H}{\mathbb{H}}	
+\newcommand{\HH}{\mathcal{H}}	
+\newcommand{\HHH}{\mathscr{H}}
+
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\II}{\mathcal{I}}	
+\newcommand{\III}{\mathscr{I}}
+
+\newcommand{\J}{\mathbb{J}}
+\newcommand{\JJ}{\mathcal{J}}	
+\newcommand{\JJJ}{\mathscr{J}}
+
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\KK}{\mathcal{K}}	
+\newcommand{\KKK}{\mathscr{K}}
+
+\renewcommand{\L}{\mathbb{L}}	
+\newcommand{\LL}{\mathcal{L}}	
+\newcommand{\LLL}{\mathscr{L}}
+
+\newcommand{\M}{\mathbb{M}}
+\newcommand{\MM}{\mathcal{M}}	
+\newcommand{\MMM}{\mathscr{M}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\NNN}{\mathscr{N}}
+
+\renewcommand{\O}{\mathbb{O}}	
+\newcommand{\OO}{\mathcal{O}}	
+\newcommand{\OOO}{\mathscr{O}}
+
+\renewcommand{\P}{\mathbb{P}}	
+\newcommand{\PP}{\mathcal{P}}	
+\newcommand{\PPP}{\mathscr{P}}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\QQ}{\mathcal{Q}}	
+\newcommand{\QQQ}{\mathscr{Q}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RR}{\mathcal{R}}	
+\newcommand{\RRR}{\mathscr{R}}
+
+\renewcommand{\S}{\mathbb{S}}	
+\renewcommand{\SS}{\mathcal{S}}
+\newcommand{\SSS}{\mathscr{S}}
+
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\TT}{\mathcal{T}}	
+\newcommand{\TTT}{\mathscr{T}}
+
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\UU}{\mathcal{U}}	
+\newcommand{\UUU}{\mathscr{U}}
+
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\VV}{\mathcal{V}}
+\newcommand{\VVV}{\mathscr{V}}
+
+\newcommand{\W}{\mathbb{W}}
+\newcommand{\WW}{\mathcal{W}}	
+\newcommand{\WWW}{\mathscr{W}}
+
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\XX}{\mathcal{X}}
+\newcommand{\XXX}{\mathscr{X}}
+
+\newcommand{\Y}{\mathbb{Y}}
+\newcommand{\YY}{\mathcal{Y}}	
+\newcommand{\YYY}{\mathscr{Y}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathcal{Z}}
+\newcommand{\ZZZ}{\mathscr{Z}}
+
+% Simboli
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\theta}{\vartheta}
+\renewcommand{\phi}{\varphi}
+
+\renewcommand{\d}[0]{\text{d}}
+\newcommand{\e}{\text{\normalfont e}}
+\renewcommand{\exp}{\text{\normalfont exp}}
+\newcommand{\f}[0]{\textsl{f}}
+\newcommand{\g}[0]{\textsl{g}}
+\renewcommand{\i}{\imath}
+\newcommand{\Id}[1]{\normalfont{\text{Id}}_{#1}}
+\renewcommand{\j}{\jmath}
+\renewcommand{\l}[0]{\textsl{l}}
+\newcommand{\sbullet}{\text{\footnotesize $\bullet$}}
+\renewcommand{\v}[0]{\textsl{v}}
+\newcommand{\Zero}[0]{{\bf 0}}
+
+% Operatori
+\renewcommand{\*}{\cdot}
+\newcommand{\CF}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\codim}[2]{\text{\normalfont codim}_{\hspace{0.05cm}#2}{\ #1}}
+\newcommand{\Dif}[2]{\text{\normalfont d}\Set{#1}_{#2}}
+\newcommand{\Diff}[2]{\text{d}{#1}_{#2}}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\Imm}[1]{\mathfrak{I}\left(#1\right)}
+\newcommand{\Leg}[2]{\genfrac{(}{)}{}{}{#1}{#2}}
+\newcommand{\nobarfrac}{\genfrac{}{}{0pt}{}}
+\newcommand{\Norma}[1]{\left\|#1\right\|}
+\newcommand{\Lie}[2]{\left[{#1},{#2}\right]}
+\newcommand{\PS}[2]{\left(#1,#2\right)}
+\newcommand{\Rad}[1]{\text{\normalfont Rad}\left(#1\right)}
+\renewcommand{\Re}[1]{\normalfont{\text{Re}}\left(#1\right)}
+\newcommand{\Res}[2]{\left.#1\right|_{#2}}
+\newcommand{\Stirling}[2]{\left[\nobarfrac{#1}{#2}\right]}
+\newcommand{\Val}[2]{\left.#1\right|_{#2}}
+
+% Insiemi
+\newcommand{\Ann}[1]{\text{\normalfont Ann}\left(#1\right)}
+\newcommand{\AutD}[1]{\normalfont{\text{Aut}}^{\normalfont{\text{Diff}}}\left(#1\right)}
+\newcommand{\Aut}[1]{\normalfont{\text{Aut}}\left(#1\right)}
+\newcommand{\Fix}[1]{\normalfont{\text{Fix}}\left(#1\right)}
+\newcommand{\FixAut}[2]{\normalfont{\text{Aut}}\left(#1/#2\right)}
+\newcommand{\FixAutD}[2]{\normalfont{\text{Aut}}^{\normalfont{\text{Diff}}}\left(#1/#2\right)}
+\newcommand{\FixD}[1]{\normalfont{\text{Fix}}^{\normalfont{\text{Diff}}}\left(#1\right)}
+\newcommand{\FixGAut}[2]{\normalfont{\text{Gal}}\left(#1/#2\right)}
+\newcommand{\FixGAutD}[2]{\normalfont{\text{Gal}}^{\normalfont{\text{Diff}}}\left(#1/#2\right)}
+\newcommand{\GAut}[1]{\normalfont{\text{Gal}}\left(#1\right)}
+\newcommand{\GAutD}[1]{\normalfont{\text{Gal}}^{\normalfont{\text{Diff}}}\left(#1\right)}
+\newcommand{\GL}[2]{\normalfont{\text{GL}}\left(#1,#2\right)}
+\newcommand{\gl}[1]{{\bf\mathfrak{g}\mathfrak{l}}\left(#1\right)}
+\newcommand{\GLE}[1]{\text{\normalfont GL}\left(#1\right)}
+\newcommand{\glm}[2]{{\bf\mathfrak{g}\mathfrak{l}}\left(#1,#2\right)}
+\newcommand{\Hom}[3]{\text{\normalfont Hom}_{#3}\left(#1,#2\right)}
+\renewcommand{\Im}[1]{\normalfont{\text{Im}}\enskip {#1}}
+\newcommand{\Ker}[1]{\normalfont{\text{Ker}}\ {#1}}
+\newcommand{\LLie}[1]{\text{Lie}\left(#1\right)}
+\newcommand{\OM}[2]{\normalfont{\text{O}}\left(#1,#2\right)}
+\newcommand{\Seq}[3]{\left\{{#1}_{#2}\right\}_{#2\in#3}}
+\newcommand{\Set}[1]{\left\{#1\right\}}
+\renewcommand{\sl}[1]{{\bf\mathfrak{s}\mathfrak{l}}(#1)}
+\newcommand{\SLM}[2]{\normalfont{\text{SL}}\left(#1,#2\right)}
+\newcommand{\slm}[2]{{\bf\mathfrak{s}\mathfrak{l}}(#1,#2)}
+\newcommand{\SO}[2]{\normalfont{\text{SO}}\left(#1,#2\right)}
+\newcommand{\Span}[1]{\text{Span}\left(#1\right)}
+\newcommand{\SU}[2]{\normalfont{\text{SU}}\left(#1,#2\right)}
+\newcommand{\Stab}[2]{\text{Stab}_{#2}{#1}}
+\newcommand{\Sym}[2]{\text{\normalfont Sym}^{#2}\left(#1\right)}
+\newcommand{\tm}[2]{{\bf\mathfrak{t}}\left(#1,#2\right)}
+\newcommand{\TM}[2]{\normalfont{\text{T}}\left(#1,#2\right)}
+\newcommand{\Tr}[1]{\text{\normalfont Tr}\left(#1\right)}
+\newcommand{\UM}[2]{\normalfont{\text{U}}\left(#1,#2\right)}
+
+
+%Citazioni
+\newcommand{\Quote}[3]{\Minipage{.5}{}{#3}{\RiquadroOmbra{
+	\say{\it #1}
+\begin{flushright}
+	#2
+\end{flushright}}}}
+
+%Equazioni
+\newtagform{brackets2}[\textbf]{[}{]}
+\usetagform{brackets2}	%Cambia le parentesi dei label
+
+\newcommand{\EqL}[2]{\begin{equation}\label{#2}\begin{split}#1\end{split}\end{equation}}
+\newcommand{\Eq}[1]{\begin{equation*}\begin{split}#1\end{split}\end{equation*}}
+
+%Mappe
+\newcommand{\Map}[5]{
+	\begin{array}{rrcl}
+		#1:\quad&#2&\to&#3\\
+		&#4&\mapsto&#5
+	\end{array}}
+	
+\newcommand{\NMap}[4]{
+	\begin{array}{rcl}
+		#1&\to & #2\\
+		#3&\mapsto & #4
+	\end{array}}
+
+% Minipage
+\newcommand{\Minipage}[4]{\begin{minipage}[l]{#1\textwidth}{#2}\end{minipage}\hfill\begin{minipage}[r]{#3\textwidth}{#4}\end{minipage}}
+
+% Minipage e figure, pari/dispari
+\newcommand{\EvOdd}[3]{
+\ifnumodd{\thepage}
+{\begin{wrapfigure}[#1]{r}{#2}#3\end{wrapfigure}}
+{\begin{wrapfigure}[#1]{l}{#2}#3\end{wrapfigure}}}
+
+% Overline (come overline, ma con la barra un po' più sollevata)
+\newcommand{\Overline}[1]{\overline{\raisebox{0pt}[\dimexpr\height+.25mm\relax]{$#1$}}}
+
+% Simboli carte da gioco
+	%\makeatletter
+	%\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+	%\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+	%\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+	%\makeatother
+
+% Soluzione alternativa  
+%\newcommand{\Alternativa}[0]{\begin{center}{\bf\large\underline{Soluzione alternativa}}\end{center}}
+
+% Bilanciamento parentesi tonde
+\makeatletter
+\def\resetMathstrut@{
+  \setbox\z@\hbox{
+    \mathchardef\@tempa\mathcode`\[\relax
+    \def\@tempb##1"##2##3{\the\textfont"##3\char"}
+    \expandafter\@tempb\meaning\@tempa\relax
+  }
+  \ht\Mathstrutbox@\ht\z@ \dp\Mathstrutbox@\dp\z@}
+\makeatother
+\begingroup
+  \catcode`(\active \xdef({\left\string(}
+  \catcode`)\active \xdef){\right\string)}
+\endgroup
+\mathcode`(="8000 \mathcode`)="8000
+
+% Nascondere
+\newcommand{\hide}[1]{\iffalse #1 \fi}
+
+% Nascondere dall'indice
+\newcounter{Counter}
+\newcommand{\Nascondi}{\setcounter{Counter}{\value{tocdepth}}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{-10}}}
+\newcommand{\Mostra}{\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}}
+
+% Puntini in basso
+\renewcommand{\dots}[0]{\hdots}
+
+% Per i wrapping delle figure dentro ambienti theorem (preso da https://ctan.org/insbox): sono disponibili
+%\InsertBoxL{numero righe sopra}{Codice immagine}[numero righe sotto]
+%\InsertBoxC{numero righe sopra}{Codice immagine}[numero righe sotto]
+%\InsertBoxR{numero righe sopra}{Codice immagine}[numero righe sotto]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  TikZ
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%Geometria
+\newcommand{\overarc}[1]{\ooalign{\hfil\scalebox{0.9}{$#1$}\cr\hfil\raisebox{6pt}{\rotatebox{90}{\scalebox{1}{$\left.\right)$}}}\hfil\cr}}
+\newcommand{\Seg}[1]{\Overline{#1}}
+\newcommand{\Punto}[3]{\addplot[mark=*, #3] coordinates {(#1,#2)};}
+\newcommand{\Puntotre}[4]{\addplot[mark=*, #4] coordinates {(#1,#2,#3)};}
+\newcommand{\Segmento}[5]{\addplot[#5] coordinates {(#1,#2) (#3,#4)};}
+\newcommand{\Grafico}[4]{\addplot[domain=#1:#2, #4] {#3};}
+
+	%%%%% Box
+%Riquadro Ombra
+\newcommand{\RiquadroOmbra}[1]{
+	\tcbset{enhanced, colback=gray!15, boxrule=0pt, colframe=white,
+		fonttitle=\bfseries}
+	\begin{tcolorbox}[lifted shadow={1mm}{-2mm}{2mm}{0.1mm}
+		{black!50!white}]#1
+	\end{tcolorbox}}
+
+%Riquadro Titolo Libro (per il colore, mettere [colbacktitle=] nel documento dopo \begin{TitoloIntro})
+\newtcolorbox{TitoloIntro}[2][]{
+	enhanced, before skip=2mm, after skip=2mm,
+	colback=black!5, colframe=white, boxrule=0mm, attach boxed title to top left={xshift=.5cm, yshift*=1mm-\tcboxedtitleheight},
+	varwidth boxed title*=-2cm,
+	boxed title style={frame code={
+			\path[fill=tcbcolback!80!black]
+			([yshift=-1mm, xshift=-1mm]frame.north west)
+			arc[start angle=0, end angle=180, radius=1mm]
+			([yshift=-1mm, xshift=1mm]frame.north east)
+			arc[start angle=180, end angle=0,radius=1mm];
+			\path[top color=tcbcolback, middle color=tcbcolback!90, bottom color = tcbcolback!40!white]
+			([xshift=-2mm]frame.north west) --
+						([xshift=2mm]frame.north east)
+			[rounded corners=1mm] -- ([xshift=1mm, yshift=-1mm]frame.north east)
+			-- (frame.south east) -- (frame.south west)
+			-- ([xshift=-1mm, yshift=-1mm]frame.north west)
+			[sharp corners]-- cycle;
+			}, interior engine=empty},
+	fonttitle=\bfseries,
+	title={#2},#1}
+
+\newtcolorbox{RTitoloIntro}[2][]{
+	enhanced, before skip=2mm, after skip=2mm,
+	colback=black!5, colframe=white, boxrule=0mm, attach boxed title to top right={xshift=-.5cm, yshift*=1mm-\tcboxedtitleheight},
+	varwidth boxed title*=2cm,
+	boxed title style={frame code={
+			\path[fill=tcbcolback!80!black]
+			([yshift=-1mm, xshift=-1mm]frame.north west)
+			arc[start angle=0, end angle=180, radius=1mm]
+			([yshift=-1mm, xshift=1mm]frame.north east)
+			arc[start angle=180, end angle=0, radius=1mm];
+			\path[top color=tcbcolback, middle 
+				color=tcbcolback!90, bottom color=tcbcolback!40!white]
+			([xshift=-2mm]frame.north west) --
+						([xshift=2mm]frame.north east)
+			[rounded corners=1mm] --([xshift=1mm, yshift=-1mm]frame.north east)
+			-- (frame.south east) -- (frame.south west)
+			-- ([xshift=-1mm, yshift=-1mm]frame.north west)
+			[sharp corners]-- cycle;
+			}, interior engine=empty},
+	fonttitle=\bfseries,
+	title={#2},#1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TOC APPENDICI SUCCESSIVE
+\setcounter{tocdepth}{3}
+\renewcommand{\appendixtocname}{}
+\renewcommand{\appendixpagename}{Appendici}
+
+\makeatletter
+\let\oldappendix\appendices
+
+\g@addto@macro\tableofcontents{
+	\let\tf@toc@orig\tf@toc}
+
+\renewcommand{\appendices}{
+  \clearpage
+  % Da adesso tutto nelle Appendici e non nel TOC
+	\let\tf@toc\tf@app
+	\addtocontents{app}{\protect\setcounter{tocdepth}{1}}
+	\immediate\write\@auxout{%
+	\string\let\string\tf@toc\string\tf@app}
+	\oldappendix}
+
+\g@addto@macro\endappendices{
+	\let\tf@toc\tf@toc@orig
+	\immediate\write\@auxout{
+	\string\let\string\tf@toc\string\tf@toc@orig}}
+  
+\newcommand{\listofappendices}{
+	\begingroup
+		\renewcommand{\contentsname}{\appendixtocname}
+		\let\@oldstarttoc\@starttoc
+		\def\@starttoc##1{\@oldstarttoc{app}}
+	\tableofcontents
+	\endgroup}
+
+\makeatother
+
+%Titolo Bibliografia
+\addto{\captionsitalian}{\renewcommand{\bibname}{}}
+
+
+% ============== emphasize text ============
+\definecolor{RoyalBlue}{rgb}{0.25,0.41,0.88}
+\newcommand{\helper}[1]{\textcolor{RoyalBlue}{\textbf{#1}}}
