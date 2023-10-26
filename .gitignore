@@ -7,3 +7,6 @@ ArticleTemplate/Article.pdf
 *.log
 *.out
 *.gz
+ArticleTemplate/Article.bbl
+*.bbl
+*.blg
