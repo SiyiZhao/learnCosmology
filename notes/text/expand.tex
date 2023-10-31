@@ -6,26 +6,23 @@
 
 We have two kinds of ``time'' in cosmology since our Universe are expanding. 
 
-If we focus on the \hl{coordinate}, the metric is written as (c=1)
+If we focus on the \hl{coordinate}, the metric is written as ($c=1$)
 \begin{equation}
-    \dd s^2 = \dd t^2 + a^2(t) (\dd x^2 + \dd y^2 + \dd z^2)
-\end{equation}
-\begin{equation}
-    a\dd{x}
+    \dd s^2 = -\dd t^2 + a^2(t) (\dd x^2 + \dd y^2 + \dd z^2)
 \end{equation}
 
-
-By scaling the time axis, we can get the \hl{conformal time}, which is equalized to the space coordinates
+By scaling the time axis, we can get the \hl{conformal time}, 
+and have an ``appearantly'' Minkovski spacetime
 \begin{equation}
-    \dd s^2 = a^2(t) (\dd \tau^2 + \dd x^2 + \dd y^2 + \dd z^2)
+    \dd s^2 = a^2(t) (-\dd \tau^2 + \dd x^2 + \dd y^2 + \dd z^2)
 \end{equation}
 
 The \hl{scale factor} can be solved from the \helper{Friedmann equation}, 
 \footnote{also deriveing the Friedmann equations from Einstein field equation is not that trival, see another block in preparation..}
-\begin{equation}
+\begin{equation}  \label{eq:Friedmann1}
     {\qty(\frac{\adot}{a})}^2 = \frac{8\pi G}{3} \rho
 \end{equation}
-with \helper{the model of energy-momentum} contained in the Universe 
+with \helper{a model of energy-momentum} contained in the Universe like 
 \footnote{Friedmann equation itself has assumptions about the energy-momentum, it's \hl{ideal fluid} which can be parameterized by only $\rho$ and $P$..}
 \begin{equation}
     \frac{\rho(t)}{\rho_{\mathrm{cr}}} = \sum_{s=\gamma, \mathrm{m}, \nu, \mathrm{DE}} \Omega_{s} {a(t)}^{-3 (1 + w_{s})} 
@@ -33,25 +30,22 @@ with \helper{the model of energy-momentum} contained in the Universe
 This model assumes a constant of equation of state. 
 
 
-% $\Lambda$CDM model
-\begin{equation}
+In our $\Lambda$CDM model (reserve curvature)
+\begin{equation} \label{eq:LCDM}
     \frac{\rho(t)}{\rho_{\mathrm{cr}}} = \Omega_{\mathrm{R}} {\qty(\frac{a}{a_0})}^{-4} + \Omega_{\mathrm{M}} {\qty(\frac{a}{a_0})}^{-3} + \Omega_\Lambda + \Omega_{\mathrm{K}} {\qty(\frac{a}{a_0})}^{-2}
 \end{equation}
-
-
-
 just solve the differencial equation
 \begin{equation}
-    \dot{a} = H_0 a_0 \sqrt{\Omega_R {\qty(\frac{a}{a_0})}^{-2} + \Omega_M {qty(\frac{a}{a_0})}^{-1} + \Omega_\Lambda{\qty(\frac{a}{a_0})}^{2} + \Omega_K}
+    \dot{a} = H_0 a_0 \sqrt{\Omega_R {\qty(\frac{a}{a_0})}^{-2} + \Omega_M {\qty(\frac{a}{a_0})}^{-1} + \Omega_\Lambda{\qty(\frac{a}{a_0})}^{2} + \Omega_K}
 \end{equation}
 
 \begin{equation}
-    t = \int_{0}^{a_1}  \frac{\dd a}{H_0 a_0 \sqrt{\Omega_R {\qty(\frac{a}{a_0})}^{-2} + \Omega_M {\qty(\frac{a}{a_0})}^{-1} + \Omega_\Lambda {\qty(\frac{a}{a_0})}^{2} + \Omega_K}}
+    t(a_1) = \int_{0}^{a_1}  \frac{\dd a}{H_0 a_0 \sqrt{\Omega_R {\qty(\frac{a}{a_0})}^{-2} + \Omega_M {\qty(\frac{a}{a_0})}^{-1} + \Omega_\Lambda {\qty(\frac{a}{a_0})}^{2} + \Omega_K}} 
 \end{equation}
-It's not linear, so need numerical solution. 
+It's not linear, so need numerical solution. See code/expansion.ipynb
 
 But it's OK to see some  exceptions.
-% \begin{Pro}
+\begin{block}
     matter donimated:
     \begin{equation}
         \dot{a} = H_0 {(a_0 \Omega_M)}^{\frac{1}{2}}  a^{-\frac{1}{2}} 
@@ -61,15 +55,41 @@ But it's OK to see some  exceptions.
         t = \frac{2}{3 H_0 {(a_0 \Omega_M)}^{\frac{1}{2}} } a^{\frac{3}{2}} 
     \end{equation}
     assumed $a(t=0)=0$.
-% \end{Pro}
+\end{block}
+
+\subsection{to cosmology redshift and Hubble parameter}
+
+It will be easy to use \hl{redshift} and \hl{Hubble parameter $H(z)$} in the calculations.
+
+Define redshift as
+\begin{equation}
+    \frac{a}{a_0} = \frac{1}{1+z}
+\end{equation}
+
+And turn \refeq{Friedmann1} to 
+\begin{equation}
+    H(a) \equiv \frac{\adot}{a} = H_0 \sqrt{\frac{\rho(a)}{\rho_{\mathrm{cr}}}} \equiv H_0 E(a)
+\end{equation}
+\refeq{LCDM} turns out 
+\begin{gather}
+    E(a) = \sqrt{\Omega_{\mathrm{R}} {\qty(\frac{a}{a_0})}^{-4} + \Omega_{\mathrm{M}} {\qty(\frac{a}{a_0})}^{-3} + \Omega_\Lambda + \Omega_{\mathrm{K}} {\qty(\frac{a}{a_0})}^{-2}} \\ 
+    E(z) = \sqrt{\Omega_{\mathrm{R}} {\qty(1+z)}^{4} + \Omega_{\mathrm{M}} {\qty(1+z)}^{3} + \Omega_\Lambda + \Omega_{\mathrm{K}} {\qty(1+z)}^{2}} 
+\end{gather}
 
 \subsection{Hubble sphere}
 
-Hubble sphere is where the Hubble flow velocity equals to the speed of light.
-
+Hubble sphere is where the Hubble flow velocity equals to the speed of light. 
 \begin{equation}
-    v_{\mathrm{H}} = \dot{a} \chi 
-    = H_0 {(a_0 \Omega_M)}^{\frac{1}{2}}  a^{-\frac{1}{2}}  
+    v_{\mathrm{H}} = \dot{a} \chi  
+\end{equation}
+The comoving distance 
+\begin{equation}
+    \chi = \int_{a_1}^{a_0} \frac{\dd a}{a^2 H(a)}
+\end{equation}
+
+Hubble sphere as a function of time should be 
+\begin{equation}
+    \chi =\frac{c}{a H(a)}
 \end{equation}
 
 \section*{\LaTeX}

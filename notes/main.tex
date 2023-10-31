@@ -4,6 +4,7 @@
 \usepackage{soul} % for highlight
 
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{physics}
 
 \usepackage[colorlinks = true,
@@ -15,6 +16,21 @@
 
 \definecolor{RoyalBlue}{rgb}{0.25,0.41,0.88}
 \newcommand{\helper}[1]{\textcolor{RoyalBlue}{\textbf{#1}}}
+
+\newtheoremstyle{SettingTheorem} % name
+    {3pt} % Space above
+    {3pt} % Space below
+    {\itshape} % Body font
+    {} % Indent amount
+    {\bfseries} % Theorem head font
+    {.} % Punctuation after theorem head
+    {.5em} % Space after theorem head
+    {} % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{SettingTheorem}
+\newtheorem{block}{Block}
+
+\newcommand{\refeq}[1]{Eq.~(\ref{eq:#1})}
 
 \DeclareMathOperator{\Ham}{H}
 
