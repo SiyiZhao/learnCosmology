@@ -2,3 +2,6 @@
 \contentsline {subsection}{\numberline {1.1}from time to scale factor}{1}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}to cosmology redshift and Hubble parameter}{2}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Hubble sphere}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Light Cone}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Event Horizon}{3}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Partical Horizon}{3}{subsection.1.6}%

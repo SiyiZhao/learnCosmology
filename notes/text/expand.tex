@@ -82,15 +82,31 @@ Hubble sphere is where the Hubble flow velocity equals to the speed of light.
 \begin{equation}
     v_{\mathrm{H}} = \dot{a} \chi  
 \end{equation}
-The comoving distance 
-\begin{equation}
-    \chi = \int_{a_1}^{a_0} \frac{\dd a}{a^2 H(a)}
-\end{equation}
+% The comoving distance 
+% \begin{equation}
+%     \chi = \int_{a_1}^{a_0} \frac{\dd a}{a^2 H(a)}
+% \end{equation}
 
 Hubble sphere as a function of time should be 
 \begin{equation}
-    \chi =\frac{c}{a H(a)}
+    \chi_{\mathrm{H}} =\frac{c}{a H(a)}
 \end{equation}
+
+\subsection{Light Cone}
+
+Light cone is defined as $\dd s^2 = 0$, so 
+\begin{gather}
+    \dd t^2 = a^2(t) \dd \chi^2 \\ 
+    \dd t = a(t) \dd \chi \\ 
+    \chi_{\rm lc}(a_1) = \int_{t_1}^{t_0} \frac{\dd t}{a(t)} = \int_{a_1}^{a_0} \frac{\dd a }{a \adot} = \int_{a_1}^{a_0} \frac{\dd a }{a^2 H(a)} 
+\end{gather} 
+
+
+\subsection{Event Horizon}
+
+just like \hl{light cone} but can end at $a_{\mathrm{future}}$. 
+
+\subsection{Partical Horizon}
 
 \section*{\LaTeX}
 
