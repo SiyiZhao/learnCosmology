@@ -104,9 +104,25 @@ Light cone is defined as $\dd s^2 = 0$, so
 
 \subsection{Event Horizon}
 
-just like \hl{light cone} but can end at $a_{\mathrm{future}}$. 
+just like \hl{light cone} but end at $a=\infty$. 
+\begin{equation}
+    \chi_{\rm EH}(a_1) = \int_{0}^{t_1} \frac{\dd t}{a(t)} = \int_{0}^{a_1} \frac{\dd a }{a \adot} = \int_{0}^{a_1} \frac{\dd a }{a^2 H(a)} 
+\end{equation}
 
-\subsection{Partical Horizon}
+\subsection{Particle Horizon}
+
+Particle horizon is the trajectory that a photon start from $\chi = 0$ at $t_i$ (in `our model', $t_i = a_i =0$).
+
+\begin{equation}
+    \chi_{\rm PH}(a_1) = \int_{t_i}^{t_1} \frac{\dd t}{a(t)} = \int_{a_i}^{a_1} \frac{\dd a }{a \adot} = \int_{a_i}^{a_1} \frac{\dd a }{a^2 H(a)} 
+\end{equation}
+
+\subsubsection{optical horizon}
+
+The optical horizon due to recombination $z(t_r) \approx 1100$.
+\begin{equation}
+    d_{\mathrm{opt}}(t) = a(\tau) \qty(\tau - \tau_r ) = a(t) \int_{t_r}^t \frac{\dd t'}{a(t')}
+\end{equation}
 
 \section*{\LaTeX}
 
