@@ -9,10 +9,15 @@
 
 请完成以下5道判断题。先尝试用物理图像判断，如有必要可以计算和画图，最后再借助计算和画图结果用物理图像判断。
 1. 只有暴涨时期宇宙膨胀速度会超光速
+   1. $\dot{a} >1$. 
 2. 存在退行速度超光速的天体，但我们没法观测到
+   1. Hubble sphere 外，lightcone上。
 3. 暴涨结束以后，宇宙的膨胀速度（本动速度为0的天体的退行速度）单调递增 (这题和后面的题都基于现在的标准宇宙学模型，即flat-LCDM，Omega_m在0.3左右，H0在70左右)
+   1. $\ddot{a}$
 4. 当被我们接受到的天体光线发出时，其退行速度一定小于光速。
 5. 如果一个天体现在的退行速度大于或等于光速，那么它现在发出的光永远不会被我们看到。
+   1. Event horizon compare with the Hubble sphere at z=0.
+   2. Event horizon will be shown more clearly and meaningfully in the conformal time plot.
 
 
 

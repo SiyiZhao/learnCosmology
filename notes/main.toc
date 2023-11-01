@@ -1,8 +1,11 @@
 \contentsline {section}{\numberline {1}Expansion}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}from time to scale factor}{1}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}to cosmology redshift and Hubble parameter}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Hubble sphere}{2}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.2}to more notations..}{2}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Cosmological Redshift}{2}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Hubble parameter}{3}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}Conformal Time}{3}{subsubsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.3}Hubble sphere}{3}{subsection.1.3}%
 \contentsline {subsection}{\numberline {1.4}Light Cone}{3}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Event Horizon}{3}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Particle Horizon}{3}{subsection.1.6}%
-\contentsline {subsubsection}{\numberline {1.6.1}optical horizon}{3}{subsubsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6}Particle Horizon}{4}{subsection.1.6}%
+\contentsline {subsubsection}{\numberline {1.6.1}optical horizon}{4}{subsubsection.1.6.1}%

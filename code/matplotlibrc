@@ -266,7 +266,7 @@ xtick.minor.pad      : 6      # distance to the minor tick label in points
 #xtick.color          : k      # color of the tick labels
 xtick.labelsize      : medium # fontsize of the tick labels
 xtick.direction      : in     # direction: in, out, or inout
-xtick.top            : True
+xtick.top            : False
 
 ytick.major.size     : 6      # major tick size in points
 ytick.minor.size     : 3      # minor tick size in points
@@ -277,7 +277,7 @@ ytick.minor.pad      : 4      # distance to the minor tick label in points
 #ytick.color          : k      # color of the tick labels
 ytick.labelsize      : medium # fontsize of the tick labels
 ytick.direction      : in     # direction: in, out, or inout
-ytick.right          : True
+ytick.right          : False
 
 ### GRIDS
 #grid.color       :   black   # grid color

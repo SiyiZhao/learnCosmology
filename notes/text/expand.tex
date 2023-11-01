@@ -10,11 +10,15 @@ If we focus on the \hl{coordinate}, the metric is written as ($c=1$)
 \begin{equation}
     \dd s^2 = -\dd t^2 + a^2(t) (\dd x^2 + \dd y^2 + \dd z^2)
 \end{equation}
+better to write in spherical coordinate system
+\begin{equation}
+    \dd s^2 = -\dd t^2 + a^2(t) \qty[{\dd{\chi}}^2 + \chi^2 \qty(\dd{\theta}^2 + {\sin}^2{\theta} \dd{\varphi}^2) ]
+\end{equation}
 
 By scaling the time axis, we can get the \hl{conformal time}, 
 and have an ``appearantly'' Minkovski spacetime
 \begin{equation}
-    \dd s^2 = a^2(t) (-\dd \tau^2 + \dd x^2 + \dd y^2 + \dd z^2)
+    \dd s^2 = a^2(\tau) (-\dd \tau^2 + \dd x^2 + \dd y^2 + \dd z^2)
 \end{equation}
 
 The \hl{scale factor} can be solved from the \helper{Friedmann equation}, 
@@ -57,15 +61,29 @@ But it's OK to see some  exceptions.
     assumed $a(t=0)=0$.
 \end{block}
 
-\subsection{to cosmology redshift and Hubble parameter}
+\subsection{to more notations..}
 
 It will be easy to use \hl{redshift} and \hl{Hubble parameter $H(z)$} in the calculations.
 
+\subsubsection{Cosmological Redshift}
 Define redshift as
 \begin{equation}
     \frac{a}{a_0} = \frac{1}{1+z}
 \end{equation}
 
+Redshift $z$ is linked to $a$ and $t$ simply. How about the comoving spacial coordinate $\chi$?
+
+\begin{equation}
+    \dd a = - \frac{a_0 \dd z}{{(1+z)}^2}
+\end{equation}
+The comoving distance from $z_1$ to now ($z_0=0$)
+\begin{equation}
+    \chi (z_1) = \int_{a_1}^{a_0} \frac{\dd a}{a^2 H(a)} = \int_{z_0}^{z_1} \frac{c \dd{z}}{a_0 H(z)}
+\end{equation}
+where $z_0=0$ by defination, $c$ is filled to balance the unit. 
+
+
+\subsubsection{Hubble parameter}
 And turn \refeq{Friedmann1} to 
 \begin{equation}
     H(a) \equiv \frac{\adot}{a} = H_0 \sqrt{\frac{\rho(a)}{\rho_{\mathrm{cr}}}} \equiv H_0 E(a)
@@ -76,16 +94,23 @@ And turn \refeq{Friedmann1} to
     E(z) = \sqrt{\Omega_{\mathrm{R}} {\qty(1+z)}^{4} + \Omega_{\mathrm{M}} {\qty(1+z)}^{3} + \Omega_\Lambda + \Omega_{\mathrm{K}} {\qty(1+z)}^{2}} 
 \end{gather}
 
+\subsubsection{Conformal Time}
+
+Conformal time identic to the relation between $\chi$ and $t$ in light cone.
+\begin{gather}
+    \dd \tau^2 = \frac{\dd t^2}{a^2(t)} \\ 
+    \dd \tau = \frac{\dd t}{a(t)} = \dd \chi \label{eq:dtau}\\ 
+    \tau(t_1) = \int_{t_i}^{t_1} \frac{\dd t}{a(t)}
+\end{gather}
+The last $=$ in \refeq{dtau} is for the convinence of coding.
+
 \subsection{Hubble sphere}
 
-Hubble sphere is where the Hubble flow velocity equals to the speed of light. 
+Hubble sphere is where the Hubble flow velocity\footnote{in the proper length and is not real `velovity'.} equals to the speed of light. 
 \begin{equation}
     v_{\mathrm{H}} = \dot{a} \chi  
 \end{equation}
-% The comoving distance 
-% \begin{equation}
-%     \chi = \int_{a_1}^{a_0} \frac{\dd a}{a^2 H(a)}
-% \end{equation}
+
 
 Hubble sphere as a function of time should be 
 \begin{equation}
@@ -94,7 +119,9 @@ Hubble sphere as a function of time should be
 
 \subsection{Light Cone}
 
-Light cone is defined as $\dd s^2 = 0$, so 
+Light cone is defined as $\dd s^2 = 0$, 
+the photon starts from $a_1$ and ends at the observer now ($a_0, \chi=0$).
+so 
 \begin{gather}
     \dd t^2 = a^2(t) \dd \chi^2 \\ 
     \dd t = a(t) \dd \chi \\ 
@@ -104,9 +131,9 @@ Light cone is defined as $\dd s^2 = 0$, so
 
 \subsection{Event Horizon}
 
-just like \hl{light cone} but end at $a=\infty$. 
+the photon starts from $a_1$ and ends at the observer in the infinity future ($a\rightarrow \infty, \chi=0$). 
 \begin{equation}
-    \chi_{\rm EH}(a_1) = \int_{0}^{t_1} \frac{\dd t}{a(t)} = \int_{0}^{a_1} \frac{\dd a }{a \adot} = \int_{0}^{a_1} \frac{\dd a }{a^2 H(a)} 
+    \chi_{\rm EH}(a_1) = \int_{t_1}^{\infty} \frac{\dd t}{a(t)} = \int_{a_1}^{\infty} \frac{\dd a }{a^2 H(a)} 
 \end{equation}
 
 \subsection{Particle Horizon}
@@ -123,6 +150,9 @@ The optical horizon due to recombination $z(t_r) \approx 1100$.
 \begin{equation}
     d_{\mathrm{opt}}(t) = a(\tau) \qty(\tau - \tau_r ) = a(t) \int_{t_r}^t \frac{\dd t'}{a(t')}
 \end{equation}
+
+
+
 
 \section*{\LaTeX}
 
