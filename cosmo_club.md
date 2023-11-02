@@ -3,9 +3,30 @@
 
 ## 观测计划
 
+### 玻尔兹曼方程
+
+- 时间：2023-11-15 19:00-21:00 
+- 地点：S621
+- 讨论内容：https://arxiv.org/pdf/astro-ph/9506072.pdf 截止（41）式。
+
+
+
+
+## Todo list 
+
+- [ ] what is CMB scale? Which kind of observation can probe the end of inflation?
+
+## 记录
+
+### expansion
+
 2023-10-16：**宇宙膨胀相关概念回顾**
 - 集中尝试：2023-10-25 19:00-21:00 地点S621
 - 集中讨论：2023-11-1 19:00-21:00 地点S621
+  - 参与者：赵成老师、芝士鱼、太阳鱼、zyjj、gsh、syt、zyf、xrjj、jnjj
+- 材料：
+  - code/expansion.ipynb
+  - notes/expansion
 
 请完成以下5道判断题。先尝试用物理图像判断，如有必要可以计算和画图，最后再借助计算和画图结果用物理图像判断。
 1. 只有暴涨时期宇宙膨胀速度会超光速
@@ -23,13 +44,7 @@
    2. Event horizon will be shown more clearly and meaningfully in the conformal time plot.
 
 
-
-
-## Todo list 
-
-- [ ] what is CMB scale? Which kind of observation can probe the end of inflation?
-
-## 记录
+### plan: linear PS
 
 - 本学期（2023年秋）拟定计算linear power spectrum（包括基础知识的复习、数值求解玻尔兹曼方程，之后可以通过各种transfer function转化成可以和观测比较的形式）
 
@@ -40,3 +55,4 @@
 2. [Medium] https://camb.info/theory.html 中的一些 Maple 示例。此外，也有 Mathematica 和 Jupyter notebook 可以参考：https://camb.info/jrs/ ， https://camb.readthedocs.io/en/latest/ScalEqs.html
 3. [Hard] https://cosmologist.info/notes/thesis.pdf （Antony 的博士论文），以及 https://camb.info/readme.html#Refs 列出的参考文献
 4. [Insane] https://arxiv.org/abs/astro-ph/9506072 (微扰理论的黄金教材，现代宇宙学的皇冠明珠，脑科体操的不二之选)
+
