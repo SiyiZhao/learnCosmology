@@ -5,22 +5,16 @@
 
 ### 玻尔兹曼方程
 
-- 时间：2023-11-15 19:00-21:00 
+- 时间：2023-11-22 19:00-21:00 
 - 地点：S621
-- 讨论内容：https://arxiv.org/pdf/astro-ph/9506072.pdf 截止（41）式。
+- 讨论内容：徐睿主讲玻尔兹曼方程
 
-
-
-
-## Todo list 
-
-- [ ] what is CMB scale? Which kind of observation can probe the end of inflation?
 
 ## 记录
 
-### expansion
+### 2023-10-16: expansion
 
-2023-10-16：**宇宙膨胀相关概念回顾**
+**宇宙膨胀相关概念回顾**
 - 集中尝试：2023-10-25 19:00-21:00 地点S621
 - 集中讨论：2023-11-1 19:00-21:00 地点S621
   - 参与者：赵成老师、芝士鱼、太阳鱼、zyjj、gsh、syt、zyf、xrjj、jnjj
@@ -43,6 +37,16 @@
    1. Event horizon compare with the Hubble sphere at z=0.
    2. Event horizon will be shown more clearly and meaningfully in the conformal time plot.
 
+### 2023-11-15: pertubation in GR
+
+- 时间：2023-11-22 19:00-21:00 
+- 地点：S621
+- 参与者：徐睿（主讲）、丹丹、太阳鱼、xws、gsh、芝士鱼、zyf
+- 内容：
+  - 回顾了宇宙学的均匀背景
+  - 讨论perturbation和guage transformation
+
+
 
 ### plan: linear PS
 
@@ -56,3 +60,8 @@
 3. [Hard] https://cosmologist.info/notes/thesis.pdf （Antony 的博士论文），以及 https://camb.info/readme.html#Refs 列出的参考文献
 4. [Insane] https://arxiv.org/abs/astro-ph/9506072 (微扰理论的黄金教材，现代宇宙学的皇冠明珠，脑科体操的不二之选)
 
+
+
+## Todo list 
+
+- [ ] what is CMB scale? Which kind of observation can probe the end of inflation?
