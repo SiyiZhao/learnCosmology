@@ -15,7 +15,19 @@
 \usepackage{orcidlink} 
 
 \definecolor{RoyalBlue}{rgb}{0.25,0.41,0.88}
+% \newenvironment{discuss}
+% {% 这是环境开始时的代码
+%   \begin{center}
+%   \begin{tabular}{|c|c|}
+%   \hline
+% }
+% {% 这是环境结束时的代码
+%   \hline
+%   \end{tabular}
+%   \end{center}
+% }
 \newcommand{\helper}[1]{\textcolor{RoyalBlue}{\textbf{#1}}}
+\newcommand{\discuss}[1]{\textcolor{RoyalBlue}{\textit{讨论问题：}\textbf{#1}}}
 
 \newtheoremstyle{SettingTheorem} % name
     {3pt} % Space above
@@ -36,6 +48,8 @@
 
 \newcommand{\adot}{\dot{a}}
 
+
+
 \title{Test}
 \author{Siyi Zhao (赵思逸)\,\orcidlink{0009-0001-4492-5158}}
 \date{\today}
@@ -46,6 +60,8 @@
 
 \input{text/expand}
 \input{text/Boltz_eq}
+
+\section*{\LaTeX usage}
 citation example\cite{lyth2009}
 
 \bibliographystyle{apsrev4-2}

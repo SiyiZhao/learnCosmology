@@ -2,3 +2,58 @@
 
 \section{Boltzmann Equation}
 
+我们讨论 inflation 结束后到 recombination 之前，光子如何产生各向异性/光子的各向异性如何演化。
+我们将看到光子和物质之间通过 Thomson scattering 相互作用，将为光子贡献一部分各向异性。(interaction between matter and photon contributes to the **anisotropies of CMB**)
+
+在微观层面，满足 Bosen-Einstein 分布 
+\begin{equation}
+    f\qty(\eta, \mathbf{x}, E, \mathbf{\hat{p}}) = \frac{1}{e^{E/T}-1}
+\end{equation}
+说明：  
+\begin{itemize}
+    \item 注意相空间是 四维时空 加上 四动量。
+    \item $\mathbf{\hat{p}}$ 是因为光子动量由能量决定。
+    \item thermal dynamic in local coordinate, 
+    \item \discuss{thermal dynamic 如何推广到 Minkowski space with perturbation ？这样简单的推广成立吗？——似乎是个还在研究中的问题。}
+    \item $f$ is scalar since 相空间的体积元不变，且粒子数不变，$f=$  粒子数/相空间的体积元。
+    \item 相体积不变，熵不变，$T$随$E$变。
+    \item \discuss{在考虑温度$T$是否改变时聊到了：黑体谱在多普勒红移后还是黑体谱吗？所以聊的结论是啥？}
+\end{itemize}
+
+
+EoM: Boltzmann equation
+\begin{equation}
+    \frac{\dd f}{\dd \tau} = C[f_a]
+\end{equation}
+$C[f_a]$ is the interaction with other particles (eg. baryon)
+
+\subsection{0th order}
+
+推出 $\bar{T} \propto \frac{1}{a}$ 
+
+\subsection{1st order}
+
+Step1: 对 $f$ 做 Taylor expansion 
+\begin{gather}
+    f\qty(\eta, \mathbf{x}, E, \mathbf{\hat{p}}) = \frac{1}{e^{E/T}-1}
+\end{gather}
+
+- 算 Boltzmann equation
+	- RHS 
+		- e-$\gamma$  scattering in e- coordinate （Thomson scattering）
+			- $\frac{d \sigma}{d \Omega}$ 
+				- 1 给出 monopole 
+				- cos theta 给出 quadrupole   
+				- 通过这些电子影响光子的分布，给光子 anisotropy ？ 
+		- 洛伦兹变换 
+
+- fluid description 
+- 和 f 比较，得到 CMB temperature multipoles 和 photon fluid variables energy-momentum tensor perturbation multipoles 的关系 
+
+- 以上两件事放在一起，得到 CMB temperature multipoles 
+- 和 geodesic 联立，把 epsilon 换成 Bardeen’s potential 
+- $\mu = \hat{p} \dot \hat{k}$ 
+
+- 得到 $\Theta$ 的演化方程 
+- 和 matter 的 energy-momentum tensor 比较，得到 baryon perturbation , dark matter perturbation 和  baryon perturbation 差一个散射项 
+- Einstein field equation 得到 Bardeen’s potential 的演化。
