@@ -10,3 +10,5 @@
 \contentsline {subsection}{\numberline {1.6}Particle Horizon}{4}{subsection.1.6}%
 \contentsline {subsubsection}{\numberline {1.6.1}optical horizon}{4}{subsubsection.1.6.1}%
 \contentsline {section}{\numberline {2}Boltzmann Equation}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}0th order}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}1st order}{5}{subsection.2.2}%

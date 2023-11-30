@@ -1,0 +1,52 @@
+%style.tex
+\usepackage[top=30mm, bottom=30mm, textwidth=120mm, left=25mm, right=25mm, outer=40mm, marginparsep=8mm, headsep=20pt]{geometry}
+\usepackage{xcolor}
+\usepackage{soul} % for highlight
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{physics}
+
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage{orcidlink} 
+
+\definecolor{RoyalBlue}{rgb}{0.25,0.41,0.88}
+% \newenvironment{discuss}
+% {% 这是环境开始时的代码
+%   \begin{center}
+%   \begin{tabular}{|c|c|}
+%   \hline
+% }
+% {% 这是环境结束时的代码
+%   \hline
+%   \end{tabular}
+%   \end{center}
+% }
+\newcommand{\helper}[1]{\textcolor{RoyalBlue}{\textbf{#1}}}
+\newcommand{\discuss}[1]{\textcolor{RoyalBlue}{\textit{讨论问题：}\textbf{#1}}}
+
+% \newtheoremstyle{SettingTheorem} % name
+%     {3pt} % Space above
+%     {3pt} % Space below
+%     {\itshape} % Body font
+%     {} % Indent amount
+%     {\bfseries} % Theorem head font
+%     {.} % Punctuation after theorem head
+%     {.5em} % Space after theorem head
+%     {} % Theorem head spec (can be left empty, meaning ‘normal’)
+
+\theoremstyle{SettingTheorem}
+\newtheorem{block}{Block}
+
+\newcommand{\refeq}[1]{Eq.~(\ref{eq:#1})}
+
+\DeclareMathOperator{\Ham}{H}
+
+\newcommand{\adot}{\dot{a}}
+
+
+
