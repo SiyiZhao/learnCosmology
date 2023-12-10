@@ -111,3 +111,4 @@
 ## Todo list 
 
 - [ ] what is CMB scale? Which kind of observation can probe the end of inflation?
+- [ ] tensor perturbation 为什么是引力波？

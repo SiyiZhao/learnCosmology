@@ -15,17 +15,15 @@
 \usepackage{orcidlink} 
 
 \definecolor{RoyalBlue}{rgb}{0.25,0.41,0.88}
-% \newenvironment{discuss}
-% {% 这是环境开始时的代码
-%   \begin{center}
-%   \begin{tabular}{|c|c|}
-%   \hline
-% }
-% {% 这是环境结束时的代码
-%   \hline
-%   \end{tabular}
-%   \end{center}
-% }
+\newenvironment{exercise}[1]
+  {\begin{trivlist}\item[\hskip \labelsep{\bfseries Exercise {#1}}]}
+  {\end{trivlist}}
+
+\newenvironment{example}[1]
+  {\begin{trivlist}\item[\hskip \labelsep{\bfseries Example (#1)}]}
+  {\end{trivlist}}
+
+
 \newcommand{\helper}[1]{\textcolor{RoyalBlue}{\textbf{#1}}}
 \newcommand{\discuss}[1]{\textcolor{RoyalBlue}{\textit{讨论问题：}\textbf{#1}}}
 
@@ -42,11 +40,15 @@
 \theoremstyle{SettingTheorem}
 \newtheorem{block}{Block}
 
-\newcommand{\refeq}[1]{Eq.~(\ref{eq:#1})}
+\newcommand{\refeq}[1]{Eq.~(\ref{#1})}
 
 \DeclareMathOperator{\Ham}{H}
 
 \newcommand{\adot}{\dot{a}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Ocal}{\mathcal{O}}
 
 
 

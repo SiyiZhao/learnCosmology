@@ -1,0 +1,64 @@
+\documentclass{ctexart}
+
+\input{../style.tex}
+
+\begin{document}
+
+\title{Mukhanov 读书笔记}
+\author{Siyi Zhao (赵思逸)\,\orcidlink{0009-0001-4492-5158}}
+\date{\today}
+
+\maketitle
+\tableofcontents
+
+
+\section*{Planck Units}
+
+\begin{gather}
+    r_{\rm Sch} = \lambda_{\rm Compton} \\
+    \frac{G m_{\rm Pl}}{c^2} = \frac{\hbar}{m_{\rm Pl} c} \\ 
+    m_{\rm Pl} = {\qty(\frac{\hbar c}{G})}^2
+\end{gather}
+
+
+
+\section{第4章~极早期宇宙}
+
+\subsection{规范不变性}
+规定规范场
+\begin{equation} \label{Amu}
+    A_\mu \rightarrow \tilde{A}_\mu = A_\mu + \partial_\mu \lambda
+\end{equation}
+
+\begin{example}
+    $F_{\mu\nu} \equiv \Dcal _\mu A_\nu - \Dcal_\nu A_\mu = \partial_\mu A_\nu - \partial_\nu A_\mu$ 在 局域规范变换 下不变。
+
+    注意规范变换是仅针对场的变换，$\partial_\mu$ （形式上）不变。由 \refeq{Amu}
+    \begin{equation}
+        \partial_\mu A_\nu - \partial_\nu A_\mu \rightarrow \partial_\mu \tilde{A}_\nu - \partial_\nu \tilde{A}_\mu = \partial_\mu (A_\nu + \partial_\nu \lambda) - \partial_\nu (A_\mu + \partial_\mu \lambda)
+    \end{equation}
+\end{example}
+
+\begin{exercise}
+    （习题4.1）
+
+    复标量场
+    \begin{equation}
+        \Lcal = \frac{1}{2} \qty(\partial ^\mu \varphi^* \partial _\mu \varphi - m^2 \varphi^* \varphi)
+    \end{equation} 
+    局域坐标变换 
+    \begin{equation}
+        \partial_\mu \varphi  \rightarrow \partial_\mu \qty(e^{-i e \lambda} \varphi) =  e^{-i e \lambda} \qty(\partial_\mu  - i e \partial_\mu \lambda ) \varphi
+    \end{equation}
+    不会
+\end{exercise}
+
+
+
+
+\end{document}
+
+
+% % \bibliographystyle{apsrev4-2}
+% % \bibliography{refs}
+

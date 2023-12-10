@@ -1,0 +1,142 @@
+\documentclass{ctexart}
+
+\input{../style.tex}
+
+\begin{document}
+
+\title{Relativistic Perturbation Theory}
+\author{Siyi Zhao (赵思逸)\,\orcidlink{0009-0001-4492-5158}}
+\date{\today}
+
+\maketitle
+\tableofcontents
+
+\section{Metric Perturbation}
+
+\begin{equation}
+    \mathrm{d} s^2=a^2(\eta)\left[-(1+2 A) \mathrm{d} \eta^2+2 B_i \mathrm{~d} x^i \mathrm{~d} \eta+\left(\delta_{i j}+2 E_{i j}\right) \mathrm{d} x^i \mathrm{~d} x^j\right]
+\end{equation}
+
+\subsection{SVT Decomposition}
+
+\begin{equation}
+    B_i=\underbrace{\partial_i B}_{\text {scalar }}+\underbrace{\hat{B}_i}_{\text {vector }}
+\end{equation}
+
+\begin{equation}
+    E_{i j}=\underbrace{C \delta_{i j}+\partial_{\langle i} \partial_{j\rangle} E}_{\text {scalar }}+\underbrace{\partial_{(i} \hat{E}_{j)}}_{\text {vector }}+\underbrace{\hat{E}_{i j}}_{\text {tensor }},
+\end{equation}
+where   
+\begin{equation}
+    \begin{aligned}
+    \partial_{\langle i} \partial_{j\rangle} E & \equiv\left(\partial_i \partial_j-\frac{1}{3} \delta_{i j} \nabla^2\right) E \\
+    \partial_{(i} \hat{E}_{j)} & \equiv \frac{1}{2}\left(\partial_i \hat{E}_j+\partial_j \hat{E}_i\right) .
+    \end{aligned}
+\end{equation}
+
+\section{Coordinate Transformations}
+
+\begin{equation}
+    x^\mu(q) \mapsto \tilde{x}^\mu(q) \equiv x^\mu(q)+\xi^\mu(q), \quad 
+    \text{where} \quad 
+    \begin{aligned}
+        & \xi^0 \equiv T, \\
+        & \xi^i \equiv L^i=\partial^i L+\hat{L}^i.
+    \end{aligned}
+\end{equation}
+
+\section{Gauge Transformations of Metric Perturbations}
+
+Assume $A$, $B_i$ and $E_{ij}$ are in order $\xi$.
+
+\begin{example}{The transformation of $B_i$}
+    \begin{equation}
+        \begin{aligned}
+            a^2(\eta) B_i = g_{0i}(x) &= \frac{\partial \tilde{x}^\alpha}{\partial \eta} \frac{\partial \tilde{x}^\beta}{\partial x^i} \tilde{g}_{\alpha \beta} (\tilde{x}) \\ 
+            &= a^2(\eta+T) \qty[\underbrace{-\partial_i T}_{\text {00-term }} + \underbrace{\delta^j_i  \tilde{B}_{j}}_{\text {0j-term }} + \underbrace{L^{j \prime} \delta^k_i \delta_{jk}}_{\text{jk-term}}] + \Ocal(\xi^2) 
+        \end{aligned}
+    \end{equation}
+    where j0-term is $0$ since both $\frac{\partial \tilde{x}^j}{\partial \eta}$ and $\frac{\partial \tilde{\eta}}{\partial x^i}$ are perturbations.
+    \begin{equation}
+        B_i = (1 + 2 \Hcal T) \qty[-\partial_i T + \tilde{B}_{i} + L^{i \prime}] + \Ocal(\xi^2) 
+    \end{equation}
+    So 
+    \begin{equation}
+        B_i \rightarrow \tilde{B}_{i} = B_i + \partial_i T - L^{i\prime} + \Ocal(\xi^2) 
+    \end{equation}
+\end{example}
+
+\begin{example}{The transformation of $E_{ij}$}
+    \begin{equation}
+        \begin{aligned}
+            g_{ij}(x) &= \frac{\partial \tilde{x}^\alpha}{\partial x^i} \frac{\partial \tilde{x}^\beta}{\partial x^j} \tilde{g}_{\alpha \beta} (\tilde{x}) 
+        \end{aligned}
+    \end{equation}
+    
+\end{example}
+\begin{exercise}{6.1}
+    SVT    
+
+\end{exercise}
+
+\section{Energy-momentum Tensor}
+\begin{equation}
+    \begin{aligned}
+    T_0^0 & \equiv-(\bar{\rho}+\delta \rho) \\
+    T_i^0 & \equiv(\bar{\rho}+\bar{P}) v_i=-T_0^i \\
+    T_j^i & \equiv(\bar{P}+\delta P) \delta_j^i+\Pi_j^i, \quad \Pi_i^i \equiv 0
+    \end{aligned}
+\end{equation}
+
+\subsection{The Coordinate Transformations of Energy-momentum Tensor}
+
+\begin{equation}
+    T^\mu{ }_\nu(x)=\frac{\partial x^\mu}{\partial \tilde{x}^\alpha} \frac{\partial \tilde{x}^\beta}{\partial x^\nu} \tilde{T}_\beta^\alpha(\tilde{x})
+\end{equation}
+
+The Jacobi
+\begin{equation}
+    \frac{\partial \tilde{x}^\alpha}{\partial x^\mu}=\left(\begin{array}{cc}
+    \partial \tilde{\eta} / \partial \eta & \partial \tilde{\eta} / \partial x^i \\
+    \partial \tilde{x}^i / \partial \eta & \partial \tilde{x}^i / \partial x^j
+    \end{array}\right)=\left(\begin{array}{cc}
+    1+T^{\prime} & \partial_i T \\
+    L^{i \prime} & \delta_j^i+\partial_j L^i
+    \end{array}\right)
+\end{equation}
+
+The inverse matrix of Jacobi should be delivered with perturbation theory 
+\begin{equation}
+    \frac{\partial x^\mu}{\partial \tilde{x}^\alpha}=\left(\begin{array}{cc}
+    \partial \eta / \partial \tilde{\eta} & \partial \eta / \partial \tilde{x}^i \\
+    \partial x^i / \partial \tilde{\eta} & \partial x^i / \partial \tilde{x}^j
+    \end{array}\right)=\left(\begin{array}{cc}
+    1-T^{\prime} & -\partial_i T \\
+    -L^{i \prime} & \delta_j^i-\partial_j L^i
+    \end{array}\right)
+\end{equation}
+
+\begin{proof}
+    $T$ 和 $L^i$ 是小量。 用 $a \sim b_i \sim c_i \sim d_{ij} \sim \epsilon$ 代替。
+    \begin{equation}
+        \left(\begin{array}{cc}
+            1+ a & b_i \\
+            c_i & \delta_j^i+ d_{ij}
+            \end{array}\right) 
+        \left(\begin{array}{cc}
+            1- a & -b_i \\
+            -c_i & \delta_j^i- d_{ij}
+            \end{array}\right)  = 
+        \left(\begin{array}{cc}
+            1 + \mathcal{O} (\epsilon^2) & \mathcal{O} (\epsilon^2) \\
+            \mathcal{O} (\epsilon^2) & \delta_j^i + \mathcal{O} (\epsilon^2)
+            \end{array}\right) 
+    \end{equation}
+\end{proof}
+
+\end{document}
+
+
+% % \bibliographystyle{apsrev4-2}
+% % \bibliography{refs}
+
